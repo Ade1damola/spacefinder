@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -9,6 +10,38 @@ from .forms import UserForm, SpaceForm
 from .models import Space, Messages
 
 # Create your views here.
+
+def home(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    spaces = Space.objects.filter(
+        Q(school__icontains=q) | 
+        Q(hostel__icontains=q) |
+        Q(price__icontains=q)
+        )
+    spaces = Space.objects.all()
+    space_count = spaces.count()
+    
+    context = {'spaces': spaces, 'space_count': space_count}
+    return render(request, 'base/home.html', context)
+
+
+def space(request, pk):
+    space = Space.objects.get(id=pk)
+    space_messages = space.messages.all()
+
+    if request.method == 'POST':
+        message = Messages.objects.create(
+            user = request.user,
+            space = space,
+            body = request.POST.get('body')
+        )
+        return redirect('space', pk=space.id)
+
+    context = {'space': space, 'space_messages': space_messages,}
+    return render(request, 'base/space.html', context)
+
+
 def loginPage(request):
     page = 'login'
 
@@ -58,13 +91,6 @@ def registerPage(request):
     return render(request, 'base/login_register.html', {'form': form})
 
 
-def home(request):
-    return render( request, 'base/home.html')
-
-def landingPage(request):
-    return render( request, 'base/landing-page.html')
-
-
 def userProfile(request, pk):
     user = User.objects.get(id=pk)
     context = {'user':user}
@@ -99,3 +125,44 @@ def createSpace(request):
     
     context = {'form': form}
     return render(request, 'base/space-form.html', context)
+
+
+@login_required(login_url='login')
+def updateSpace(request, pk):
+    space = Space.objects.get(id=pk)
+    form = SpaceForm(instance=space)
+
+    if request.user != space.host:
+        return HttpResponse("You're not allowed to do this!!!")
+    
+    if request.method == 'POST':
+        space.name = request.POST.get('name')
+        return redirect('home')
+    context = {'form': form, 'space': space}
+    return render(request, 'base/space-form.html', context) 
+
+
+@login_required(login_url='login')
+def deleteSpace(request, pk):
+    space = Space.objects.get(id=pk)
+
+    if request.user != space.host:
+        return HttpResponse("You're not allowed to do this!!!")
+
+    if request.method == 'POST':
+        space.delete()
+        return redirect('home')
+    return render(request, 'base/delete.html', {'obj':space}) 
+
+
+@login_required(login_url='login')
+def deleteMessage(request, pk):
+    message = Messages.objects.get(id=pk)
+
+    if request.user != message.user:
+        return HttpResponse("You're not allowed to do this!!!")
+
+    if request.method == 'POST':
+        message.delete()
+        return redirect('home')
+    return render(request, 'base/delete.html', {'obj':message}) 

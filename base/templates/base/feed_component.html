@@ -1,0 +1,19 @@
+{% for space in spaces %}
+<div class="roomListRoom">
+    <div class="roomListRoom__header">
+      <a href="{% url 'user-profile' space.host.id %}" class="roomListRoom__author">
+        <div class="avatar avatar--small">
+          <img src="/static/images/avatar.svg" />
+        </div>
+        <span>@{{space.host.username}}</span>
+      </a>
+      <div class="roomListRoom__actions">
+        <span>{{space.created|timesince}} ago</span>
+      </div>
+    </div>
+    <div class="roomListRoom__content">
+      <a href="{% url 'space' space.id %}">{{space.hostel}} hostel</a>
+    </div>
+</div>
+{% endfor %}
+

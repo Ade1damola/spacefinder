@@ -16,12 +16,7 @@ class Space(models.Model):
         ordering = ['-updated', '-created']
     
     def __str__(self):
-        return {
-            'school': self.school,
-            'hostel': self.hostel,
-            'room_number': self.room_number,
-            'price': self.price,
-                }
+        return self.hostel
     
 class Messages(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

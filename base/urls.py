@@ -8,10 +8,14 @@ urlpatterns =[
 
     path('update-user/', views.updateUser, name="update-user"),
 
-    path('home', views.home, name="home"),
-    path('', views.landingPage, name="landing-page"),
-    path('space/', views.Space, name="space"),
+    path('', views.home, name="home"),
+    path('space/<str:pk>/', views.space, name="space"),
     path('profile/<str:pk>/', views.userProfile, name="user-profile"),
 
     path('create-space/', views.createSpace, name="create-space"),
+    path('update-space/<str:pk>/', views.updateSpace, name="update-space"),
+    path('delete-space/<str:pk>/', views.deleteSpace, name="delete-space"),
+
+    path('delete-message/<str:pk>/', views.deleteMessage, name="delete-message"),
+
 ]
