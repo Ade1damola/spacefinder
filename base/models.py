@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 class Space(models.Model):
     host = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=200)
     school = models.CharField(max_length=200)
     hostel = models.CharField(max_length=200)
     room_number = models.CharField(max_length=5)
@@ -17,7 +16,12 @@ class Space(models.Model):
         ordering = ['-updated', '-created']
     
     def __str__(self):
-        return self.name
+        return {
+            'school': self.school,
+            'hostel': self.hostel,
+            'room_number': self.room_number,
+            'price': self.price,
+                }
     
 class Messages(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

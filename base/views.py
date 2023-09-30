@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm 
-from .forms import UserForm
+from .forms import UserForm, SpaceForm
+from .models import Space, Messages
 
 # Create your views here.
 def loginPage(request):
@@ -63,9 +64,6 @@ def home(request):
 def landingPage(request):
     return render( request, 'base/landing-page.html')
 
-def space(request):
-    return HttpResponse('AVAILABLE SPACES')
-
 
 def userProfile(request, pk):
     user = User.objects.get(id=pk)
@@ -84,3 +82,20 @@ def updateUser(request):
             return redirect('user-profile', pk=user.id)
 
     return render(request, 'base/update-user.html', {'form': form})
+
+
+@login_required(login_url='login')
+def createSpace(request):
+    form = SpaceForm()
+    if request.method == 'POST':
+        Space.objects.create(
+            host=request.user,
+            school=request.POST.get('school'),
+            hostel=request.POST.get('hostel'),
+            room_number=request.POST.get('room_number'),
+            price=request.POST.get('price'),
+        )
+        return redirect('home')
+    
+    context = {'form': form}
+    return render(request, 'base/space-form.html', context)

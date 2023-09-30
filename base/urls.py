@@ -10,6 +10,8 @@ urlpatterns =[
 
     path('home', views.home, name="home"),
     path('', views.landingPage, name="landing-page"),
-    path('space/', views.space, name="space"),
+    path('space/', views.Space, name="space"),
     path('profile/<str:pk>/', views.userProfile, name="user-profile"),
+
+    path('create-space/', views.createSpace, name="create-space"),
 ]
