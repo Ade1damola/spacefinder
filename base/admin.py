@@ -1,8 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Space, Messages
+from .models import Space, Message, School
 
 admin.site.register(Space)
-admin.site.register(Messages)
+admin.site.register(Message)
+admin.site.register(School)
 

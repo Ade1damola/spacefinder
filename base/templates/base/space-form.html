@@ -14,35 +14,42 @@
               </path>
             </svg>
           </a>
-          <h3>Create/Update Bed space</h3>
+          <h3>Create/Update Bed Space</h3>
         </div>
       </div>
       <div class="layout__body">
         <form class="form" action="" method="POST">
           {% csrf_token %}
-    
+
           <div class="form__group">
-            <label for="space-school">School</label>
-            {{form.school}} 
+            <label for="room_topic">School</label> 
+            <input required type="text" value="{{space.school.name}}" name="topic" list="topic-list" />
+            <datalist id="topic-list">
+              <select id="room-topic">
+                {% for school in schools %}
+                <option value="{{school.name}}">{{school.name}}</option>
+                {% endfor %}
+              </select>
+            </datalist>
           </div>
 
           <div class="form__group">
-            <label for="space-hostel">Hostel</label>
+            <label for="room_description">Hostel</label>
             {{form.hostel}} 
           </div>
 
           <div class="form__group">
-            <label for="room_description">Room No</label>
+            <label for="room_name">Room Number</label>
             {{form.room_number}} 
           </div>
 
           <div class="form__group">
-            <label for="space-name">Price</label>
+            <label for="room_name">Price</label>
             {{form.price}} 
           </div>
 
           <div class="form__action">
-            <a class="btn btn--dark" href="{%url 'home' %}">Cancel</a>
+            <a class="btn btn--dark" href="{% url 'home' %}">Cancel</a>
             <button class="btn btn--main" type="submit">Submit</button>
           </div>
         </form>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm 
 from .forms import UserForm, SpaceForm
-from .models import Space, Messages
+from .models import Space, Message, School
 
 # Create your views here.
 
@@ -15,30 +15,32 @@ def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 
     spaces = Space.objects.filter(
-        Q(school__icontains=q) | 
+        Q(school__name__icontains=q) |
         Q(hostel__icontains=q) |
         Q(price__icontains=q)
         )
-    spaces = Space.objects.all()
-    space_count = spaces.count()
     
-    context = {'spaces': spaces, 'space_count': space_count}
+    space_count = spaces.count()
+    schools = School.objects.all()
+    space_messages = Message.objects.filter(Q(space__school__name__icontains=q))
+    
+    context = {'spaces': spaces, 'space_count': space_count, 'schools': schools, 'space_messages': space_messages}
     return render(request, 'base/home.html', context)
 
 
 def space(request, pk):
     space = Space.objects.get(id=pk)
-    space_messages = space.messages.all()
+    space_messages = space.message.all()
 
     if request.method == 'POST':
-        message = Messages.objects.create(
+        message = Message.objects.create(
             user = request.user,
             space = space,
             body = request.POST.get('body')
         )
         return redirect('space', pk=space.id)
 
-    context = {'space': space, 'space_messages': space_messages,}
+    context = {'space': space, 'space_messages': space_messages}
     return render(request, 'base/space.html', context)
 
 
@@ -93,7 +95,10 @@ def registerPage(request):
 
 def userProfile(request, pk):
     user = User.objects.get(id=pk)
-    context = {'user':user}
+    spaces = user.space_set.all()
+    space_messages = user.message_set.all()
+    schools = School.objects.all()
+    context = {'user':user, 'spaces':spaces,'space_messages':space_messages, 'schools': schools}
     return render(request, 'base/profile.html', context)
 
 
@@ -113,32 +118,47 @@ def updateUser(request):
 @login_required(login_url='login')
 def createSpace(request):
     form = SpaceForm()
+    school = School.objects.all()
     if request.method == 'POST':
+        topic_name = request.POST.get('topic')
+        school, created = School.objects.get_or_create(name=topic_name)
+
         Space.objects.create(
             host=request.user,
-            school=request.POST.get('school'),
+            school=school,
             hostel=request.POST.get('hostel'),
             room_number=request.POST.get('room_number'),
-            price=request.POST.get('price'),
+            price=request.POST.get('price')
         )
         return redirect('home')
     
-    context = {'form': form}
+    context = {'form': form, 'school': school}
     return render(request, 'base/space-form.html', context)
-
-
 @login_required(login_url='login')
 def updateSpace(request, pk):
-    space = Space.objects.get(id=pk)
-    form = SpaceForm(instance=space)
-
+    space = get_object_or_404(Space, id=pk)
+    
     if request.user != space.host:
         return HttpResponse("You're not allowed to do this!!!")
-    
+
     if request.method == 'POST':
-        space.name = request.POST.get('name')
-        return redirect('home')
-    context = {'form': form, 'space': space}
+        form = SpaceForm(request.POST, instance=space)
+        if form.is_valid():
+            school_name = request.POST.get('school')
+            school, created = School.objects.get_or_create(name=school_name)
+
+            space.school = school
+            space.hostel = request.POST.get('hostel')
+            space.room_number = request.POST.get('room_number')
+            space.price = request.POST.get('price')
+            space.save()
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occurred during space update!')
+    
+    form = SpaceForm(instance=space)
+    schools = School.objects.all()
+    context = {'form': form, 'space': space, 'schools': schools}
     return render(request, 'base/space-form.html', context) 
 
 
@@ -157,7 +177,7 @@ def deleteSpace(request, pk):
 
 @login_required(login_url='login')
 def deleteMessage(request, pk):
-    message = Messages.objects.get(id=pk)
+    message = Message.objects.get(id=pk)
 
     if request.user != message.user:
         return HttpResponse("You're not allowed to do this!!!")
