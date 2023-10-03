@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm 
-from .forms import UserForm, SpaceForm
-from .models import Space, Message, School
+from .forms import UserForm, SpaceForm, NewsletterSubscriptionForm
+from .models import Space, Message, School, NewsletterSubscription, SpaceRating
 
 # Create your views here.
 
@@ -134,6 +134,8 @@ def createSpace(request):
     
     context = {'form': form, 'school': school}
     return render(request, 'base/space-form.html', context)
+
+
 @login_required(login_url='login')
 def updateSpace(request, pk):
     space = get_object_or_404(Space, id=pk)
@@ -186,3 +188,45 @@ def deleteMessage(request, pk):
         message.delete()
         return redirect('home')
     return render(request, 'base/delete.html', {'obj':message}) 
+
+
+def subscribe_to_newsletter(request):
+    form = NewsletterSubscriptionForm()
+    if request.method == 'POST':
+
+        NewsletterSubscription.objects.create(
+            first_name=request.POST.get('first_name'),
+            last_name=request.POST.get('last_name'),
+            email=request.POST.get('email'),
+            phone_number=request.POST.get('phone_number')
+        )
+        if form.is_valid():
+            form.save()
+            # Optionally, you can send a confirmation email here.
+            return redirect('about')  # Redirect back to the "About" section.
+
+    # Handle form display here (GET request) or form validation errors.
+    return render(request, 'base/contact.html', {'form': form})
+
+
+@login_required(login_url='login')
+def rate_space(request,pk):
+    if request.method == 'POST':
+        rating = int(request.POST.get('rating'))
+        review = request.POST.get('review')
+        user = request.user
+
+        # Check if the user has already rated the product
+        existing_rating = SpaceRating.objects.filter(user=user, space_id=pk).first()
+
+        if existing_rating:
+            # Update the existing rating
+            existing_rating.rating = rating
+            existing_rating.review = review
+            existing_rating.save()
+        else:
+            # Create a new rating
+            SpaceRating.objects.create(user=user, space_id= pk, rating=rating, review=review)
+
+        # Redirect back to the product detail page or wherever you want
+        return redirect('product_detail', space_id=pk)

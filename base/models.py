@@ -39,3 +39,25 @@ class Message(models.Model):
         
     def __str__(self):
         return self.body[0:50]
+    
+
+class NewsletterSubscription(models.Model):
+    email = models.EmailField()
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    phone_number = models.CharField(
+        max_length=15,
+        blank=True,  
+        null=True,   
+    )
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+    
+
+class SpaceRating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    space = models.ForeignKey(Space, on_delete=models.CASCADE)
+    rating = models.PositiveIntegerField()
+    review = models.TextField()
