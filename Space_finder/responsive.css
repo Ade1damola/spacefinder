@@ -1,0 +1,42 @@
+@media only screen and (max-width: 600px){
+
+    .background-section{
+        width: auto;
+        height: 400px;
+    }
+
+    .float-section{
+        background-color: rgba(255, 250, 205, 0.632);
+        margin-top: -70px;
+        margin-bottom: 10px;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        height: fit-content;
+        border-radius: 0cm;
+        color: black;
+    }
+
+    .float-section .container{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .contact-section .container-fluid{
+        flex-direction: column;
+    }
+}
+    
+
+@media only screen and (min-width: 700px) and (max-width: 900px){
+    .background-section{
+        width: auto;
+        height: 400px;
+    }
+
+    .contact-section .container-fluid{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
