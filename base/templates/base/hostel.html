@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<section class="hostel-section">
+  <div class="container d-flex justify-content-between">
+    <div class="d-inline-flex align-items-center justify-content-between">
+      <div><h2>Popular Hostels</h2></div>
+      <div><h4 class="text-secondary"> {{space_count}}</h4></div>
+    </div>
+    <div><a href="#" class="text-success text-decoration-none">View all></a></div>
+  </div>
+  {% for space in spaces %}
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-img-top d-inline-flex justify-content-between align-items-start p-4 ">
+          <button class="btn btn-secondary">Top Picks</button>
+          <i class="fa fa-gratipay fa-2x text-white" aria-hidden="true"></i>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title">{{space.hostel}} Room {{space.room_number}}</h6>
+          <h4 class="card-text fw-bold">#{{space.price}}</h4>
+          <p class="card-text">By: {{space.host}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+
+{% endblock %}

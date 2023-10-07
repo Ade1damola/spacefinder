@@ -12,11 +12,22 @@ class School(models.Model):
     
 
 class Space(models.Model):
+    LOCATION_CHOICES = [
+        ('on-campus', 'On-Campus'),
+        ('off-campus', 'Off-Campus'),
+    ]
+    GENDER_CHOICES = [
+        ('male', 'Male'),
+        ('female', 'Female'),
+    ]
+
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     school = models.ForeignKey (School, on_delete=models.SET_NULL, null=True)
     hostel = models.CharField(max_length=200)
     room_number = models.CharField(max_length=5)
     price = models.PositiveIntegerField(null=True)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True) 
+    location = models.CharField(max_length=20, choices=LOCATION_CHOICES, null=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     
@@ -56,8 +67,13 @@ class NewsletterSubscription(models.Model):
         return self.email
     
 
-class SpaceRating(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    space = models.ForeignKey(Space, on_delete=models.CASCADE)
-    rating = models.PositiveIntegerField()
-    review = models.TextField()
+class UserRating(models.Model):
+    rated_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ratings_given', null=True)
+    rated_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ratings_received', null=True)
+    rating = models.PositiveIntegerField()  # You can define the rating scale as per your requirements
+
+    class Meta:
+        unique_together = ('rated_by', 'rated_user')  # Ensure each user can rate another user only once
+
+    def __str__(self):
+        return f"{self.rated_by.username} -> {self.rated_user.username} ({self.rating})"

@@ -1,72 +1,43 @@
 {% extends 'main.html' %}
-
 {% block content %}
 
-<div class="container">
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to SpaceFinder</h1>
-            <p>Find or share affordable bed spaces for students.</p>
-            <a href="#signup" class="cta-button">Get Started</a>
-        </div>
-    </section>
-    
-    <section id="features" class="features">
-        <h2>Features</h2>
-        <!-- Feature cards go here -->
-    </section>
-    
-    <section id="pricing" class="pricing">
-        <h2>Pricing Plans</h2>
-        <!-- Pricing plans go here -->
-    </section>
-    
-    <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <!-- Contact form goes here -->
-    </section>
 
-    {% include 'base/school_component.html' %}
+<!-- WHY SECTION -->
+<section class="why-section container">
+  <h2>Why choose us</h2>
+  <p>
+    When it comes to finding the perfect hostel, you have plenty of options. So, why should you choose Spacefinder? We're passionate about providing you with the best hostel experience possible, and here are some compelling reasons why you should make us your go-to choice:
+  <p>
+  <ul style="list-style-type: none;">
+    <li>1. Unmatched Selection:
+      <ul style="list-style-type: square;"><li>We curate a diverse range of hostels in top locations around school. Whether you're on a budget or looking for a hostel just you and your friends, you'll find the perfect accommodation that suits your needs and preferences.   
+      </li></ul>
+    </li>
+    <li>2. Best Price Guarantee:
+      <ul style="list-style-type: square;"><li>We're committed to offering you the most competitive prices. Our Best Price Guarantee ensures that you won't find a lower price for the same hostel anywhere else. If you do, we'll match it or beat it!</li></ul>
+    </li>
+    <li>3. Trust and Reliability:
+      <ul style="list-style-type: square;"><li>Spacefinder is a trusted name in the housing industry in akoka. We've earned the confidence of thousands of students who rely on us for safe and secure bookings.</li></ul>
+    </li>
+    <li>4. Easy Booking Process:
+      <ul style="list-style-type: square;"><li>Our user-friendly website makes booking hostels a breeze. With just a few clicks, you can reserve your bed or room, saving you time and hassle.</li></ul>
+    </li>
+    <li> 6. Exceptional Customer Support:
+      <ul style="list-style-type: square;"><li>Have questions or need assistance with your booking? Our dedicated customer support team is here to assist you 24/7. Your satisfaction is our priority.</li></ul>
+    </li>
+    <li>7. Exclusive Deals and Promotions:
+      <ul style="list-style-type: square;"><li>Keep an eye out for our exclusive deals, discounts, and promotions. We're always working to offer you the best value for your money.</li></ul>
+    </li>
+    <li>8. Personalized Recommendations:
+      <ul style="list-style-type: square;"><li>Our website's intelligent algorithms provide personalized recommendations based on your preferences and past bookings, ensuring you find the perfect hostel every time.
+      </li></li></ul>
+  </ul>  
+  <p>
+    Thank you for considering Spacefinder for your hostel booking needs. We're here to make your hostel experience exceptional, from the moment you start planning to the day you check out. Join our community of students and embark on unforgettable journeys with us.
+    Ready to book your next adventure? <a href="{% url 'login' %}" class="text-decoration-none">Get started now!</a>
+  </p>
 
-    <div class="roomList">
-        <div class="mobile-menu">
-            <form class="header__search">
-            <label>
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                <title>search</title>
-                <path
-                    d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z"
-                ></path>
-                </svg>
-                <input placeholder="Search for posts" />
-            </label>
-            </form>
-            <div class="mobile-menuItems">
-            <a class="btn btn--main btn--pill" href="#">Browse Schools</a>
-            <a class="btn btn--main btn--pill" href="#">Recent Activities</a>
-            </div>
-        </div>
-        <div class="roomList__header">
-            <div>
-            <h2>SpaceFinder</h2>
-            <p>{{space_count}} Space available</p>
-            </div>
-            <a class="btn btn--main" href="{% url 'create-space' %}">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                <title>add</title>
-                <path
-                d="M16.943 0.943h-1.885v14.115h-14.115v1.885h14.115v14.115h1.885v-14.115h14.115v-1.885h-14.115v-14.115z"
-                ></path>
-            </svg>
-            Create Space
-            </a>
-        </div>
-
-        {% include 'base/feed_component.html' %}
-        
-    <footer>
-        <p>&copy; 2023 SpaceFinder</p>
-    </footer>
-</div>
+</section>
 
 {% endblock %}
+   

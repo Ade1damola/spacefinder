@@ -1,3 +1,128 @@
-body{
-    background-color: aquamarine;
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px;
+    margin: 0;
 }
+
+a{
+    text-decoration: none;
+}
+
+/* MAIN PAGE */
+/* MAIN PAGE */
+/* MAIN PAGE */
+
+
+/* HEADER SECTION */
+.header-section{
+    background-image: url("/static/images/Rectangle\ 8583.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+}
+
+.background-section{
+    width: auto;
+    height: 550px;
+}
+
+/* FLOAT SECTION */
+.float-section{
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: -70px;
+    margin-bottom: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: solid black 1px;
+    border-radius: 20cm;
+    height: 150px;
+}
+
+.find {
+    margin-top: 10px;
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: black;
+    border-radius: 5px;
+    z-index: 0;
+    background: #fff;
+    overflow: hidden;
+    border: 2px solid #000000;
+    color: #000000;
+  }
+  .find:hover {
+    color: #fff;
+  }
+  .find:hover:after {
+    height: 100%;
+  }
+  .find:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background: #495057;
+  }
+
+/* HOSTEL SECTION */
+.hostel-section{
+    margin-top: 100px;
+    padding: 50px;
+    
+}
+.card-img-top{
+    background-image: url("/static/images/Rectangle\ 8587.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 200px;
+}
+
+/* WHY SECTION */
+.why-section{
+    margin-top: 100px;
+}
+
+
+/* ABOUT PAGE */
+/* ABOUT PAGE */
+/* ABOUT PAGE */
+
+.about-section{
+    margin-top: 50px;
+    font-size: 17px;
+}
+
+.text{
+    margin-top: 20px;
+}
+
+
+/* CONTACT PAGE */
+/* CONTACT PAGE */
+/* CONTACT PAGE */
+.head-section{
+    background-image: url("/static/images/Rectangle\ 8589.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+}
+
+.contact-section{
+    margin-top: 50px;
+    font-size: 17px;
+}
+

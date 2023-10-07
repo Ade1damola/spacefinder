@@ -12,6 +12,9 @@ urlpatterns =[
     path('newsletter-subscription', views.subscribe_to_newsletter, name="subscribe_to_newsletter"),
 
     path('', views.home, name="home"),
+    path('hostel/', views.hostel, name="hostel"),
+    path('about/', views.about, name="about"),
+    path('contact/', views.contact, name="contact"),
 
     path('space/<str:pk>/', views.space, name="space"),
     path('create-space/', views.createSpace, name="create-space"),
