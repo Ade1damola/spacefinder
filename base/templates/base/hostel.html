@@ -1,21 +1,24 @@
 {% extends 'main.html' %}
+{% load static %}
 {% block content %}
-
-<section class="hostel-section">
-  <div class="container d-flex justify-content-between">
-    <div class="d-inline-flex align-items-center justify-content-between">
+{% comment %} <section class="background-section">
+</section> {% endcomment %}
+<section class="container hostel-section">
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="d-inline-flex align-items-center">
       <div><h2>Popular Hostels</h2></div>
-      <div><h4 class="text-secondary"> {{space_count}}</h4></div>
+      <div class="ms-5"><h4 class="text-secondary"> {{space_count}}</h4></div>
     </div>
-    <div><a href="#" class="text-success text-decoration-none">View all></a></div>
+    <div><a href="{% url 'accomodation' %}" class="text-success text-decoration-none">View all></a></div>
   </div>
   {% for space in spaces %}
-  <div class="row row-cols-1 row-cols-md-4 g-4">
+  <div class=" row row-cols-1 row-cols-md-4 g-4">
     <div class="col">
       <div class="card h-100">
         <div class="card-img-top d-inline-flex justify-content-between align-items-start p-4 ">
           <button class="btn btn-secondary">Top Picks</button>
-          <i class="fa fa-gratipay fa-2x text-white" aria-hidden="true"></i>
+          <img class="text-white" width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/000000/following.png" alt="following"/>
+          {% comment %} <i class="fa fa-gratipay fa-2x text-white" aria-hidden="true"></i> {% endcomment %}
         </div>
         <div class="card-body">
           <h6 class="card-title">{{space.hostel}} Room {{space.room_number}}</h6>

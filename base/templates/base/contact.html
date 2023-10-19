@@ -1,8 +1,11 @@
 {% extends 'main.html' %}
 {% block content %}
+
+<section class="back-section">
+</section>
 <!-- CONTACT SECTION -->
 <section class="contact-section">
-    <div class=" container-fluid d-flex justify-content-around">
+    <div class=" container d-flex justify-content-around">
         <div class="container">
             <h3 class="fw-bold">CONTACT US</h3>
             <p>Please fill out your details and we will be in touch shortly.</p>
@@ -11,7 +14,7 @@
             <form>
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Subject</label>
-                  <input type="text" class="form-control border border-top-0 border-start-0 border-end-0 border-black">
+                  <input type="text" class="form-control">
                 </div><div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Full Name</label>
                   <input type="text" class="form-control">
@@ -45,14 +48,8 @@
                     <label class="form-check-label" for="inlineCheckbox1">I HAVE READ AND AGREED TO INNOSON GROUP PRIVACY POLICY*</label>
                 </div>
               </div>
-              <div class="mb-3 d-flex align-self-center justify-content-centre mx-auto">
-                <!-- <div>
-                    <a class="btn btn-success btn-lg" href="#">Submit</a>
-                </div> -->
-                <div>
-                    <a class="btn btn-success btn-lg" href="#">Submit</a>
-                </div>
-                
+              <div class="mb-3 d-flex align-self-end ms-5">
+                <a class="btn btn-success btn-lg" href="#">Submit</a>
               </div>
         </div>
     </div>

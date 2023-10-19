@@ -1,6 +1,45 @@
 {% extends 'main.html' %}
-{% block content %}
 
+
+{% block content %}
+<section class="background-section">
+</section>
+<!-- FLOAT SECTION -->
+<section class="float-section">
+  <form method="get" action="{% url 'home' %}">
+    <div class="container d-flex justify-content-evenly">
+        <div class="content">
+            <h6 class="text-white">Location</h6>
+            <select class="form-select">
+              <option selected>Where do you have to stay?</option>
+              <option value="1">On-Campus</option>
+              <option value="2">Off-Campus</option>
+              <!-- <option value="3">Three</option> -->
+            </select>
+        </div>
+        <div class="content">
+          <h6 class="text-white">Gender</h6>
+          <select class="form-select">
+            <option selected>What is your gender?</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+          </select>
+      </div>
+        <div class="content">
+            <h6 class="text-white">Hostel</h6>
+            <select class="form-select">
+              <option selected>Which hostel do you want to stay?</option>
+              <option value="1">Mariere</option>
+              <option value="2">Biobaku</option>
+            </select>
+        </div>
+        <div class="content">
+            <!-- <a href="#" role="button" class="btn btn-light find" name="q">Find a bed</a> -->
+            <input type="button"  class="btn btn-light find" value="Find a bed">   
+        </div>
+    </div>
+  </form>
+</section>
 
 <!-- WHY SECTION -->
 <section class="why-section container">

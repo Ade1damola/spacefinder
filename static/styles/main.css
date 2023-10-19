@@ -15,15 +15,27 @@ a{
 
 /* HEADER SECTION */
 .header-section{
-    background-image: url("/static/images/Rectangle\ 8583.png");
+    /* background-image: url("/static/images/Rectangle\ 8583.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+    background-color: rgba(255, 255, 255, 0.3);
+    /* opacity: 50%; */
     padding: 20px;
 }
 
 .background-section{
+    background-image: url("/static/images/Rectangle\ 8583.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     width: auto;
-    height: 550px;
+    height: 660px;
+}
+
+.nav-link{
+    color: white;
+}
+.nav-link:hover{
+    color: red;
 }
 
 /* FLOAT SECTION */
@@ -110,15 +122,28 @@ a{
     margin-top: 20px;
 }
 
+/* ACCOMODATION PAGE */
+/* ACCOMODATION PAGE */
+/* ACCOMODATION PAGE */
+
+
+
+/* CONFIRM AND PAY PAGE */
+/* CONFIRM AND PAY PAGE */
+/* CONFIRM AND PAY PAGE */
+
+.pay_left{
+    margin-top: 20px;
+}
+
 
 /* CONTACT PAGE */
 /* CONTACT PAGE */
 /* CONTACT PAGE */
-.head-section{
+.back-section{
     background-image: url("/static/images/Rectangle\ 8589.png");
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 20px;
 }
 
 .contact-section{
@@ -126,3 +151,47 @@ a{
     font-size: 17px;
 }
 
+/* FOOTER */
+/* FOOTER */
+/* FOOTER */
+
+.footer-section{
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+.sign {
+    min-width: 150px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    z-index: 0;
+    background: #fff;
+    overflow: hidden;
+    border: 2px solid #495057;
+    color: #495057;
+  }
+  .sign:hover {
+    color: #fff;
+  }
+  .sign:hover:after {
+    height: 100%;
+  }
+  .sign:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background: #495057;
+  }

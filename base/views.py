@@ -246,6 +246,16 @@ def contact(request):
 
     return render(request, 'base/contact.html')
 
+def accomodation(request):
+
+
+    return render(request, 'base/accomodation.html')
+
+def confirm_pay(request):
+
+
+    return render(request, 'base/confirm_pay.html')
+
 
 def hostel(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
