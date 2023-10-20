@@ -1,71 +1,41 @@
 {% load static %}
 
+
 <!-- HEADER SECTION -->
-<section class="head-section">
-<header class="site-header">
-    <nav class="navbar navbar-expand-lg bg-transparent ps-4 pe-4">
-        <div class="container-fluid">
+<section class="header-section">
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg bg-transparent fixed">
+        <div class="container">
           <a class="navbar-brand text-success" href="{% url 'home' %}">Spacefinder</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active text-white" aria-current="page" href="{% url 'home' %}">Home</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="{% url 'hostel' %}">Hostels</a>
+                <a class="nav-link" href="{% url 'hostel' %}">Hostels</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="{% url 'about' %}">About Us</a>
+                <a class="nav-link" href="{% url 'about' %}">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="{% url 'contact' %}">Contact</a>
+                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
               </li>
             </ul>
             <div class="mb-2">
-                <a href="#" class="text-white"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
-                <a href="#" class="text-white"><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></a>
+                <a href="#" class="text-black"><i class="fa fa-bars fa-1x" aria-hidden="true"></i></a>
+                <a href="#" class="text-black"><i class="fa fa-user-circle-o fa-1x" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
       </nav>
-</header>
-
-<!-- FLOAT SECTION -->
-<section class="float-section">
-  <form method="get" action="{% url 'home' %}">
-    <div class="container d-flex justify-content-evenly">
-        <div class="content">
-            <h6 class="text-white">Location</h6>
-            <select class="form-select">
-              <option selected>Where do you have to stay?</option>
-              <option value="1">On-Campus</option>
-              <option value="2">Off-Campus</option>
-              <!-- <option value="3">Three</option> -->
-            </select>
-        </div>
-        <div class="content">
-          <h6 class="text-white">Gender</h6>
-          <select class="form-select">
-            <option selected>What is your gender?</option>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-          </select>
-      </div>
-        <div class="content">
-            <h6 class="text-white">Hostel</h6>
-            <select class="form-select">
-              <option selected>Which hostel do you want to stay?</option>
-              <option value="1">Mariere</option>
-              <option value="2">Biobaku</option>
-            </select>
-        </div>
-        <div class="content">
-            <!-- <a href="#" role="button" class="btn btn-light find" name="q">Find a bed</a> -->
-            <input type="button" name="q" class="btn btn-light find" value="Find a bed">   
-        </div>
-    </div>
-  </form>
+  </header>
 </section>
+
+
+
+
+
