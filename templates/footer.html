@@ -1,6 +1,6 @@
 {% load static %}
 <!-- FOOTER SECTION -->
-<footer class="footer-section mt-auto">
+<footer class="footer-section py-5">
     <div class="foot container d-flex justify-content-around">
       <div class="container">
         <h4>Spacefinder</h4>
@@ -8,10 +8,10 @@
       <div class="foot container d-flex justify-content-evenly">
         <div class="container">
             <ul class="list-unstyled">
-                <li class="py-2"><a class="text-decoration-none text-black" href="#">Home</a></li>
-                <li class="py-2"><a class="text-decoration-none text-black" href="#">Hostels</a></li>
-                <li class="py-2"><a class="text-decoration-none text-black" href="#">About Us</a></li>
-                <li class="py-2"><a class="text-decoration-none text-black" href="#">Contact</a></li>
+                <li class="py-2"><a class="text-decoration-none text-black" href="{% url 'home' %}">Home</a></li>
+                <li class="py-2"><a class="text-decoration-none text-black" href="{% url 'hostel' %}">Hostels</a></li>
+                <li class="py-2"><a class="text-decoration-none text-black" href="{% url 'about' %}">About Us</a></li>
+                <li class="py-2"><a class="text-decoration-none text-black" href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </div>
         <div class="container">
