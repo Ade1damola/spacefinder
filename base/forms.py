@@ -15,10 +15,10 @@ class SpaceForm(ModelForm):
         exclude = ['host']
 
 
-# class NewsletterSubscriptionForm(ModelForm):
-#     class Meta:
-#         model = NewsletterSubscription
-#         fields = ['email']
+class NewsletterSubscriptionForm(ModelForm):
+    class Meta:
+        model = NewsletterSubscription
+        fields = ['email']
 
 
 class ContactForm(ModelForm):

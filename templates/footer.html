@@ -19,7 +19,7 @@
             <form method="post" action="{% url 'newsletter_subscription' %}">
               {% csrf_token %}
               {{form.as_p}}
-                <input type="text" class="form-control py-2" placeholder="Your email address" required>
+                <input type="email" name="email" class="form-control py-2" placeholder="Your email address" required>
                 <button type="submit" class="btn border border-black my-4 ms-5 sign ">Sign me up</button>
             </form>
         </div>

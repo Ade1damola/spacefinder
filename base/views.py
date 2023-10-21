@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm 
-from .forms import UserForm, SpaceForm, ContactForm
+from .forms import UserForm, SpaceForm, ContactForm, NewsletterSubscriptionForm
 from .models import Space, Message, School, NewsletterSubscription, UserRating, ContactFormSubmission
 from .models import UserRating
 
@@ -199,13 +199,8 @@ def deleteMessage(request, pk):
 
 def subscribe_to_newsletter(request):
     if request.method == 'POST':
-        # form = NewsletterSubscriptionForm(request.POST)
+        form = NewsletterSubscriptionForm(request.POST)
 
-        email = request.POST.get('email')
-
-        # NewsletterSubscription.objects.create(
-        #     email=request.POST.get('email')
-        # )
         if form.is_valid():
             form.save()
             return redirect('home')
@@ -240,16 +235,9 @@ def about(request):
 
 
 def contact(request):
-    form = ContactForm(request.POST)
-
     if request.method == 'POST':
-        ContactFormSubmission.objects.create(
-            subject=request.POST.get('subject'),
-            fullname=request.POST.get('fullname'),
-            email=request.POST.get('email'),
-            phone_number=request.POST.get('phone_number'),
-            message=request.POST.get('message')
-        )
+        form = ContactForm(request.POST)
+
         if form.is_valid():
             form.save()
             return redirect('home')

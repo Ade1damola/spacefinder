@@ -13,7 +13,6 @@
         <div class="container">
             <form method="post" action="{% url 'contact' %}">
               {% csrf_token %}
-              {{ form.as_p }}
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Subject</label>
                   <input type="text" class="form-control">
@@ -32,7 +31,6 @@
                   <!-- <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label> -->
                   <textarea class="form-control" rows="3" cols="10" placeholder="please input your message"></textarea>
                 </div>
-            </form>
               <div class="mb-3">
                 <p>
                 We will never sell your data, will keep your details secure and will never share your data with third parties for marketing purposes.
@@ -53,6 +51,7 @@
               <div class="mb-3 d-flex align-self-end ms-5">
                 <button class="btn btn-success btn-lg" type="submit">Submit</button>
               </div>
+            </form>
         </div>
     </div>
 </section>
