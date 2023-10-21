@@ -23,7 +23,16 @@
         justify-content: space-between;
     }
 
-    .contact-section .container-fluid{
+    .contact{
+        flex-direction: column;
+    }
+    .back{
+        height: 100px;
+    }
+    .confirm{ 
+        flex-direction: column;
+    }
+    .foot{
         flex-direction: column;
     }
 }
@@ -35,8 +44,17 @@
         height: 400px;
     }
 
-    .contact-section .container-fluid{
+    .contact{
         flex-direction: column;
-        justify-content: space-between;
+    }
+
+    .back{
+        height: 100px;
+    }
+    .confirm{ 
+        flex-direction: column;
+    }
+    .foot{
+        flex-direction: column;
     }
 }

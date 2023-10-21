@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm 
 from .forms import UserForm, SpaceForm, NewsletterSubscriptionForm
-from .models import Space, Message, School, NewsletterSubscription, SpaceRating
+from .models import Space, Message, School, NewsletterSubscription, UserRating
+from .models import UserRating
+
 
 # Create your views here.
 
@@ -24,7 +26,8 @@ def home(request):
     schools = School.objects.all()
     space_messages = Message.objects.filter(Q(space__school__name__icontains=q))
     
-    context = {'spaces': spaces, 'space_count': space_count, 'schools': schools, 'space_messages': space_messages}
+    context = {'spaces': spaces, 'space_count': space_count, 'schools': schools,
+                'space_messages': space_messages}
     return render(request, 'base/home.html', context)
 
 
@@ -98,7 +101,11 @@ def userProfile(request, pk):
     spaces = user.space_set.all()
     space_messages = user.message_set.all()
     schools = School.objects.all()
-    context = {'user':user, 'spaces':spaces,'space_messages':space_messages, 'schools': schools}
+    ratings_received = UserRating.objects.filter(rated_user=user)
+    
+    # Calculate the average rating for the user (if ratings exist)
+    average_rating = ratings_received.aggregate(Avg('rating'))['rating__avg']
+    context = {'user':user, 'spaces':spaces,'space_messages':space_messages, 'schools': schools, 'rating': average_rating}
     return render(request, 'base/profile.html', context)
 
 
@@ -210,23 +217,61 @@ def subscribe_to_newsletter(request):
 
 
 @login_required(login_url='login')
-def rate_space(request,pk):
+def rate_user(request, rated_user_id):
     if request.method == 'POST':
-        rating = int(request.POST.get('rating'))
-        review = request.POST.get('review')
-        user = request.user
+        rater = request.user
+        rated_user = User.objects.get(pk=rated_user_id)
+        rating_value = int(request.POST.get('rating'))
 
-        # Check if the user has already rated the product
-        existing_rating = SpaceRating.objects.filter(user=user, space_id=pk).first()
-
+        # Check if the rater has already rated the user
+        existing_rating = UserRating.objects.filter(rated_by=rater, rated_user=rated_user).first()
         if existing_rating:
-            # Update the existing rating
-            existing_rating.rating = rating
-            existing_rating.review = review
+            existing_rating.rating = rating_value
             existing_rating.save()
         else:
-            # Create a new rating
-            SpaceRating.objects.create(user=user, space_id= pk, rating=rating, review=review)
+            UserRating.objects.create(rated_by=rater, rated_user=rated_user, rating=rating_value)
 
-        # Redirect back to the product detail page or wherever you want
-        return redirect('product_detail', space_id=pk)
+    # Redirect back to the user's profile or another appropriate page
+    return redirect('user_profile', user_id=rated_user_id)
+
+
+def about(request):
+
+
+    return render(request, 'base/about.html')
+
+
+def contact(request):
+
+
+    return render(request, 'base/contact.html')
+
+def accomodation(request):
+
+
+    return render(request, 'base/accomodation.html')
+
+def confirm_pay(request):
+
+
+    return render(request, 'base/confirm_pay.html')
+
+
+def hostel(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    spaces = Space.objects.filter(
+        Q(school__name__icontains=q) |
+        Q(hostel__icontains=q) |
+        Q(price__icontains=q) |
+        Q(gender__icontains=q) |
+        Q(location__icontains=q)
+        )
+    
+    space_count = spaces.count()
+    schools = School.objects.all()
+    space_messages = Message.objects.filter(Q(space__school__name__icontains=q))
+    
+    context = {'spaces': spaces, 'space_count': space_count, 'schools': schools,
+                'space_messages': space_messages}
+    return render(request, 'base/hostel.html', context)
