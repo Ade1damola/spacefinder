@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm 
-from .forms import UserForm, SpaceForm, NewsletterSubscriptionForm
-from .models import Space, Message, School, NewsletterSubscription, UserRating
+from .forms import UserForm, SpaceForm, ContactForm
+from .models import Space, Message, School, NewsletterSubscription, UserRating, ContactFormSubmission
 from .models import UserRating
 
 
@@ -198,22 +198,20 @@ def deleteMessage(request, pk):
 
 
 def subscribe_to_newsletter(request):
-    form = NewsletterSubscriptionForm()
     if request.method == 'POST':
+        # form = NewsletterSubscriptionForm(request.POST)
 
-        NewsletterSubscription.objects.create(
-            first_name=request.POST.get('first_name'),
-            last_name=request.POST.get('last_name'),
-            email=request.POST.get('email'),
-            phone_number=request.POST.get('phone_number')
-        )
+        email = request.POST.get('email')
+
+        # NewsletterSubscription.objects.create(
+        #     email=request.POST.get('email')
+        # )
         if form.is_valid():
             form.save()
-            # Optionally, you can send a confirmation email here.
-            return redirect('about')  # Redirect back to the "About" section.
+            return redirect('home')
 
     # Handle form display here (GET request) or form validation errors.
-    return render(request, 'base/contact.html', {'form': form})
+    return render(request, 'base/home.html', {'form': form})
 
 
 @login_required(login_url='login')
@@ -242,9 +240,25 @@ def about(request):
 
 
 def contact(request):
+    form = ContactForm(request.POST)
 
+    if request.method == 'POST':
+        ContactFormSubmission.objects.create(
+            subject=request.POST.get('subject'),
+            fullname=request.POST.get('fullname'),
+            email=request.POST.get('email'),
+            phone_number=request.POST.get('phone_number'),
+            message=request.POST.get('message')
+        )
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = ContactForm()
+    
+    context = {'form': form}
+    return render(request, 'base/contact.html', context)
 
-    return render(request, 'base/contact.html')
 
 def accomodation(request):
 

@@ -15,6 +15,7 @@ urlpatterns =[
     path('hostel/', views.hostel, name="hostel"),
     path('about/', views.about, name="about"),
     path('contact/', views.contact, name="contact"),
+    path('newsletter_subscription/', views.subscribe_to_newsletter, name="newsletter_subscription"),
     path('accomodation/', views.accomodation, name="accomodation"),
     path('confirm_pay/', views.confirm_pay, name="confirm_pay"),
 

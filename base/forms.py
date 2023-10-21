@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django.contrib.auth.models import User
-from .models import Space, NewsletterSubscription
+from .models import Space, NewsletterSubscription, ContactFormSubmission
 
 class UserForm(ModelForm):
     class Meta:
@@ -15,7 +15,13 @@ class SpaceForm(ModelForm):
         exclude = ['host']
 
 
-class NewsletterSubscriptionForm(ModelForm):
+# class NewsletterSubscriptionForm(ModelForm):
+#     class Meta:
+#         model = NewsletterSubscription
+#         fields = ['email']
+
+
+class ContactForm(ModelForm):
     class Meta:
-        model = NewsletterSubscription
-        fields = ['email', 'first_name', 'last_name']
+        model = ContactFormSubmission
+        fields = ['subject','fullname', 'email','phone_number', 'message']

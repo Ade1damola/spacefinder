@@ -11,7 +11,9 @@
             <p>Please fill out your details and we will be in touch shortly.</p>
         </div>
         <div class="container">
-            <form>
+            <form method="post" action="{% url 'contact' %}">
+              {% csrf_token %}
+              {{ form.as_p }}
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Subject</label>
                   <input type="text" class="form-control">
@@ -37,7 +39,7 @@
                 <br><br>
                 We may also process your information for legitimate reasons associated with your use or ownership of an Innoson car/motorcycle, for reasons concerning information or network security, to defend or pursue legal rights or to meet regulatory requirements. 
                 <br><br>
-                You can update your contact details at any time by emailing dataofficer@innosongroup.com or change your mind by clicking “unsubscribe” in any email you receive from us.
+                You can update your contact details at any time by emailing dataofficer@spacefinder.com or change your mind by clicking “unsubscribe” in any email you receive from us.
                 <br><br>
                 For further details on how your data is used and stored please refer to our Privacy Policy.
                 </p>
@@ -45,11 +47,11 @@
               <div class="mb-3">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" required>
-                    <label class="form-check-label" for="inlineCheckbox1">I HAVE READ AND AGREED TO INNOSON GROUP PRIVACY POLICY*</label>
+                    <label class="form-check-label" for="inlineCheckbox1">I HAVE READ AND AGREED TO SPACEFINDER GROUP PRIVACY POLICY*</label>
                 </div>
               </div>
               <div class="mb-3 d-flex align-self-end ms-5">
-                <a class="btn btn-success btn-lg" href="#">Submit</a>
+                <button class="btn btn-success btn-lg" type="submit">Submit</button>
               </div>
         </div>
     </div>

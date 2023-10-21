@@ -50,17 +50,26 @@ class Message(models.Model):
         
     def __str__(self):
         return self.body[0:50]
-    
 
-class NewsletterSubscription(models.Model):
+
+class ContactFormSubmission(models.Model):
+    subject = models.CharField(max_length=50)
+    fullname = models.CharField(max_length=100)
     email = models.EmailField()
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
     phone_number = models.CharField(
-        max_length=15,
+        max_length=11,
         blank=True,  
         null=True,   
     )
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
+class NewsletterSubscription(models.Model):
+    email = models.EmailField()
+
     subscribed_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

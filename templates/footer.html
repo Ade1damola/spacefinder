@@ -8,16 +8,20 @@
       <div class="container d-flex justify-content-evenly">
         <div class="container">
             <ul class="list-unstyled">
-                <li class="py-2"><a class="text-decoration-none text-black" href="#">Home</a></li>
-                <li class="py-2"><a class="text-decoration-none text-black" href="#">Hostels</a></li>
-                <li class="py-2"><a class="text-decoration-none text-black" href="#">About Us</a></li>
-                <li class="py-2"><a class="text-decoration-none text-black" href="#">Contact</a></li>
+                <li class="py-2"><a class="text-decoration-none text-black" href="{% url 'home' %}">Home</a></li>
+                <li class="py-2"><a class="text-decoration-none text-black" href="{% url 'hostel' %}">Hostels</a></li>
+                <li class="py-2"><a class="text-decoration-none text-black" href="{% url 'about' %}">About Us</a></li>
+                <li class="py-2"><a class="text-decoration-none text-black" href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </div>
         <div class="container">
             <h5 class="py-2">Join our newsletter</h5>
-            <input type="text" class="form-control py-2" placeholder="Your email address">
-            <a href="#" class="btn border border-black my-4 ms-5 sign ">Sign me up</a>
+            <form method="post" action="{% url 'newsletter_subscription' %}">
+              {% csrf_token %}
+              {{form.as_p}}
+                <input type="text" class="form-control py-2" placeholder="Your email address" required>
+                <button type="submit" class="btn border border-black my-4 ms-5 sign ">Sign me up</button>
+            </form>
         </div>
       </div>
     </div>
