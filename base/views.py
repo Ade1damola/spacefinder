@@ -16,17 +16,14 @@ def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 
     spaces = Space.objects.filter(
-        Q(school__name__icontains=q) |
+        Q(gender__icontains=q) |
         Q(hostel__icontains=q) |
-        Q(price__icontains=q)
+        Q(location__icontains=q)
         )
     
-    space_count = spaces.count()
-    schools = School.objects.all()
     space_messages = Message.objects.filter(Q(space__school__name__icontains=q))
     
-    context = {'spaces': spaces, 'space_count': space_count, 'schools': schools,
-                'space_messages': space_messages}
+    context = {'spaces': spaces, 'space_messages': space_messages}
     return render(request, 'base/home.html', context)
 
 
@@ -262,9 +259,7 @@ def hostel(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 
     spaces = Space.objects.filter(
-        Q(school__name__icontains=q) |
         Q(hostel__icontains=q) |
-        Q(price__icontains=q) |
         Q(gender__icontains=q) |
         Q(location__icontains=q)
         )
@@ -276,9 +271,3 @@ def hostel(request):
     context = {'spaces': spaces, 'space_count': space_count, 'schools': schools,
                 'space_messages': space_messages}
     return render(request, 'base/hostel.html', context)
-
-
-def search(request):
-    location = request.GET.get('location', 'on-campus')
-    gender = request.GET.get('gender', 'male')
-    hostel = request.GET.get('hostel', 'mariere')
