@@ -149,7 +149,7 @@ a{
     background-repeat: no-repeat;
     background-size: cover;
     width: auto;
-    height: 100px;
+    height: 660px;
     top: -100px;
 }
 
@@ -163,6 +163,7 @@ a{
 
 .footer-section{
     background-color: rgba(0, 0, 0, 0.1);
+    padding-top: 70px;
 }
 
 .sign {
