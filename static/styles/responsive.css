@@ -26,9 +26,11 @@
     .contact-section .container-fluid{
         flex-direction: column;
     }
-    .footer-section .container{
+    .confirm{ 
         flex-direction: column;
-        padding: 0px;
+    }
+    .foot{
+        flex-direction: column;
     }
 }
     
@@ -44,8 +46,10 @@
         justify-content: space-between;
     }
 
-    .footer-section .container{
+    .confirm{ 
         flex-direction: column;
-        padding: 0px;
+    }
+    .foot{
+        flex-direction: column;
     }
 }

@@ -15,12 +15,10 @@ a{
 
 /* HEADER SECTION */
 .header-section{
-    /* background-image: url("/static/images/Rectangle\ 8583.png");
-    background-repeat: no-repeat;
-    background-size: cover; */
     background-color: rgba(255, 255, 255, 0.3);
-    /* opacity: 50%; */
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .background-section{
@@ -29,6 +27,15 @@ a{
     background-size: cover;
     width: auto;
     height: 660px;
+    top: -100px;
+}
+.back-section{
+    background-image: url("/static/images/Rectangle\ 8583.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+    height: 100px;
+    top: -100px;
 }
 
 .nav-link{
@@ -41,7 +48,9 @@ a{
 /* FLOAT SECTION */
 .float-section{
     background-color: rgba(255, 255, 255, 0.3);
-    margin-top: -70px;
+    position: relative;
+    z-index: 2;
+    top: -170px;
     margin-bottom: 10px;
     margin-left: 200px;
     margin-right: 200px;
@@ -91,7 +100,6 @@ a{
 
 /* HOSTEL SECTION */
 .hostel-section{
-    margin-top: 100px;
     padding: 50px;
     
 }
@@ -104,9 +112,6 @@ a{
 }
 
 /* WHY SECTION */
-.why-section{
-    margin-top: 100px;
-}
 
 
 /* ABOUT PAGE */
@@ -114,7 +119,6 @@ a{
 /* ABOUT PAGE */
 
 .about-section{
-    margin-top: 50px;
     font-size: 17px;
 }
 
@@ -140,14 +144,16 @@ a{
 /* CONTACT PAGE */
 /* CONTACT PAGE */
 /* CONTACT PAGE */
-.back-section{
+.back{
     background-image: url("/static/images/Rectangle\ 8589.png");
     background-repeat: no-repeat;
     background-size: cover;
+    width: auto;
+    height: 100px;
+    top: -100px;
 }
 
 .contact-section{
-    margin-top: 50px;
     font-size: 17px;
 }
 
@@ -157,7 +163,6 @@ a{
 
 .footer-section{
     background-color: rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
 }
 
 .sign {
