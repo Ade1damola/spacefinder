@@ -8,6 +8,7 @@
     <div class="confirm d-flex justify-content-around">
         <div class="pay_left">
             <form class="container">
+              {% csrf_token %}
               <div class="mb-4">
                 <select class="form-select">
                   <option>Credit or Debit</option>

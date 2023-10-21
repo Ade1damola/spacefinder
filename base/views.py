@@ -8,7 +8,6 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm 
 from .forms import UserForm, SpaceForm, ContactForm, NewsletterSubscriptionForm
 from .models import Space, Message, School, NewsletterSubscription, UserRating, ContactFormSubmission
-from .models import UserRating
 
 
 # Create your views here.
@@ -277,3 +276,9 @@ def hostel(request):
     context = {'spaces': spaces, 'space_count': space_count, 'schools': schools,
                 'space_messages': space_messages}
     return render(request, 'base/hostel.html', context)
+
+
+def search(request):
+    location = request.GET.get('location', 'on-campus')
+    gender = request.GET.get('gender', 'male')
+    hostel = request.GET.get('hostel', 'mariere')

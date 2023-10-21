@@ -6,36 +6,36 @@
 </section>
 <!-- FLOAT SECTION -->
 <section class="float-section">
-  <form method="get" action="{% url 'home' %}">
+  <form method="get" action="{% url 'search' %}">
     <div class="container d-flex justify-content-evenly">
         <div class="content">
             <h6 class="text-white">Location</h6>
-            <select class="form-select">
+            <select class="form-select" name="location">
               <option selected>Where do you have to stay?</option>
-              <option value="1">On-Campus</option>
-              <option value="2">Off-Campus</option>
+              <option value="on-campus">On-Campus</option>
+              <option value="off-campus">Off-Campus</option>
               <!-- <option value="3">Three</option> -->
             </select>
         </div>
         <div class="content">
           <h6 class="text-white">Gender</h6>
-          <select class="form-select">
+          <select class="form-select" name="gender">
             <option selected>What is your gender?</option>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
           </select>
       </div>
         <div class="content">
             <h6 class="text-white">Hostel</h6>
-            <select class="form-select">
+            <select class="form-select" name="hostel">
               <option selected>Which hostel do you want to stay?</option>
-              <option value="1">Mariere</option>
-              <option value="2">Biobaku</option>
+              <option value="mariere">Mariere</option>
+              <option value="biobaku">Biobaku</option>
             </select>
         </div>
         <div class="content">
             <!-- <a href="#" role="button" class="btn btn-light find" name="q">Find a bed</a> -->
-            <input type="button"  class="btn btn-light find" value="Find a bed">   
+            <button type="submit" class="btn btn-light find">Find a bed</button>   
         </div>
     </div>
   </form>
