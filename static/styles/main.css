@@ -11,17 +11,22 @@ a{
 /* MAIN PAGE */
 /* MAIN PAGE */
 /* MAIN PAGE */
-
+.body{
+    position: relative;
+}
 
 /* HEADER SECTION */
 .header-section{
-    /* background-image: url("/static/images/Rectangle\ 8583.png");
+    background-image: url("/static/images/Rectangle\ 8583.png");
     background-repeat: no-repeat;
-    background-size: cover; */
-    background-color: rgba(255, 255, 255, 0.3);
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.3);
     /* opacity: 50%; */
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
+
 
 .background-section{
     background-image: url("/static/images/Rectangle\ 8583.png");
@@ -29,6 +34,7 @@ a{
     background-size: cover;
     width: auto;
     height: 660px;
+    top: -100px;
 }
 
 .nav-link{
