@@ -15,8 +15,10 @@ urlpatterns =[
     path('hostel/', views.hostel, name="hostel"),
     path('about/', views.about, name="about"),
     path('contact/', views.contact, name="contact"),
-    path('accomodation/', views.accomodation, name="accomodation"),
     path('confirm_pay/', views.confirm_pay, name="confirm_pay"),
+
+    path('new_registration/', views.new_registration, name="new_registration"),
+    path('signup/', views.signup, name="signup"),
 
     path('space/<str:pk>/', views.space, name="space"),
     path('create-space/', views.createSpace, name="create-space"),

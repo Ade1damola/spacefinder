@@ -99,10 +99,6 @@ a{
   }
 
 /* HOSTEL SECTION */
-.hostel-section{
-    padding: 50px;
-    
-}
 .card-img-top{
     background-image: url("/static/images/Rectangle\ 8587.png");
     background-repeat: no-repeat;
@@ -163,7 +159,7 @@ a{
 
 .footer-section{
     background-color: rgba(0, 0, 0, 0.1);
-    margin-top: 100px;
+    margin-top: 500px;
 }
 
 .sign {
@@ -201,3 +197,28 @@ a{
     width: 100%;
     background: #495057;
   }
+
+
+
+
+
+  .or {
+    display: flex;
+    text-align: center;
+  }
+  .title{
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    align-items: center;
+    column-gap: 10px;
+  }
+  .title::before, .title::after{
+    content: "";
+    width: 300px;
+    height: 1px;
+    background-color: grey;
+    opacity: 30%;
+    display: block;
+  }
+  
+  
