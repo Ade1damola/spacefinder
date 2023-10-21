@@ -244,15 +244,19 @@ def contact(request):
     return render(request, 'base/contact.html', context)
 
 
-def accomodation(request):
-
-
-    return render(request, 'base/accomodation.html')
-
 def confirm_pay(request):
 
 
     return render(request, 'base/confirm_pay.html')
+
+def new_registration(request):
+
+
+    return render(request, 'base/register.html')
+def signup(request):
+
+
+    return render(request, 'base/signup.html')
 
 
 def hostel(request):
