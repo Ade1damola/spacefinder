@@ -1,36 +1,78 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-
 <section class="back-section position-relative">
 </section>
-<section class="container hostel-section">
-  <div class="d-flex justify-content-between align-items-center">
-    <div class="d-inline-flex align-items-center">
-      <div><h2>Popular Hostels</h2></div>
-      <div class="ms-5"><h4 class="text-secondary"> {{space_count}}</h4></div>
-    </div>
-    <div><a href="{% url 'accomodation' %}" class="text-success text-decoration-none">View all></a></div>
-  </div>
-  {% for space in spaces %}
-  <div class=" row row-cols-1 row-cols-md-4 g-4">
-    <div class="col">
-      <div class="card h-100">
-        <div class="card-img-top d-inline-flex justify-content-between align-items-start p-4 ">
-          <button class="btn btn-secondary">Top Picks</button>
-          <img class="text-white" width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/000000/following.png" alt="following"/>
-          {% comment %} <i class="fa fa-gratipay fa-2x text-white" aria-hidden="true"></i> {% endcomment %}
+<section class="container accommodation-section">
+    <div class="container my-4">
+        <h2>Male Hostel</h2>
+            <h4>On-campus</h4>
+        <div class="d-flex align-items-center justify-content-evenly my-4">
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
         </div>
-        <div class="card-body">
-          <h6 class="card-title">{{space.hostel}} Room {{space.room_number}}</h6>
-          <h4 class="card-text fw-bold">#{{space.price}}</h4>
-          <p class="card-text">By: {{space.host}}</p>
+        <div class="d-flex align-items-center justify-content-evenly my-4">
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
         </div>
-      </div>
+        
     </div>
-  </div>
-  {% endfor %}
+    <div class="container my-4">
+            <h4>Off-campus</h4>
+  
+        <div class="d-flex align-items-center justify-content-evenly my-4">
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+        </div>
+        <div class="d-flex align-items-center justify-content-evenly my-4">
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+        </div>
+        
+    </div>
+    <div class="container my-5">
+        <h2>Female Hostel</h2>
+            <h4>On-campus</h4>
+        <div class="d-flex align-items-center justify-content-evenly my-4">
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+        </div>
+        <div class="d-flex align-items-center justify-content-evenly my-4">
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+        </div>
+        
+    </div>
+    <div class="container my-4">
+            <h4>Off-campus</h4>
+        <div class="d-flex align-items-center justify-content-evenly my-4">
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+          <div>Shodeinde</div>
+        </div>
+        <div class="d-flex align-items-center justify-content-evenly my-4">
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+            <div>Shodeinde</div>
+        </div>
+        
+    </div>
+    
 </section>
 
-
+           
 {% endblock %}
