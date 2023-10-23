@@ -1,0 +1,26 @@
+{% extends 'second_main_authentication.html' %}
+{% load static %}
+{% block content %}
+<img src="{% static "/images/Vector.png" %}" class="vector position-absolute top-0 end-0">
+    <div class="container align-items-center" style="width: 700px; height: auto;">
+        <div class="text-center">
+            <img src="{% static "/images/Frame 909.svg" %}" style="width: 220px; height: 200px;">
+        </div>
+        <div class="email-back rounded-5 p-5 mx-md-5"  style="width: auto; height: auto;">
+            <h1 class="fw-bold text-center">Change email address</h1>
+            <p class="text-secondary text-center">Please enter your email address to get verified</p>
+        <form>
+            <div class="mb-3 d-grid gap-4">
+                <div><label class="form-label text-start">Email</label>
+                <input type="email" class="form-control" placeholder="name@example.com"></div>
+                <div class="d-grid gap-2">
+                    <a href="#" class="btn btn-success" type="button">Continue</a>
+                </div>
+            </div>
+            <p class="text-center mt-4">Already have an account? <a class="text-success text-decoration-none" href="#">Sign in</a></p>
+        </form>
+        </div>
+        
+    </div>
+
+{% endblock %}

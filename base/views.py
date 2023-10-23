@@ -247,18 +247,31 @@ def contact(request):
     return render(request, 'base/contact.html')
 
 def confirm_pay(request):
-
-
     return render(request, 'base/confirm_pay.html')
-
 def new_registration(request):
-
-
     return render(request, 'base/register.html')
 def signup(request):
-
-
     return render(request, 'base/signup.html')
+def log_in(request):
+    return render(request, 'base/login.html')
+def forgot_password(request):
+    return render(request, 'base/forgot_password.html')
+def link_sent(request):
+    return render(request, 'base/link_sent.html')
+def reset_password(request):
+    return render(request, 'base/reset_password.html')
+def password_changed(request):
+    return render(request, 'base/password_changed.html')
+def email_code(request):
+    return render(request, 'base/email_code.html')
+def change_email(request):
+    return render(request, 'base/change_email.html')
+def verification_complete(request):
+    return render(request, 'base/verification_complete.html')
+def authentication_error(request):
+    return render(request, 'base/authentication_error.html')
+def access_denied(request):
+    return render(request, 'base/access_denied.html')
 
 
 def hostel(request):
