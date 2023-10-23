@@ -13,7 +13,7 @@
         <h1 class="fw-bold">Sign up</h1>
         <h2 class="text-secondary mb-5">Let's get you started</h2>
     
-        <form>
+        <form method="post" action="{% url 'sign_up' %}">
             <div class="mb-3">
                 <label class="form-label">First name</label>
                 <input type="text" class="form-control">
@@ -39,7 +39,7 @@
             </div>
             
         </form>
-        <p class="text-center mt-4">Already have an account? <a class="text-success text-decoration-none" href="#">Sign in</a></p>
+        <p class="text-center mt-4">Already have an account? <a class="text-success text-decoration-none" href="{% url 'log_in' %}">Sign in</a></p>
             
         
     </div>

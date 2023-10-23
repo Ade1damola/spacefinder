@@ -246,28 +246,78 @@ def contact(request):
 
 def confirm_pay(request):
     return render(request, 'base/confirm_pay.html')
-def new_registration(request):
-    return render(request, 'base/register.html')
-def signup(request):
-    return render(request, 'base/signup.html')
+
+
+def register(request):
+    form = UserCreationForm()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.email = user.email.lower()
+            user.save() 
+            login(request, user)
+            return redirect('sign_up')
+        else:
+            for field, errors in form.errors.items():
+                messages.error(request, f'Error in field {field}: {", ".join(errors)}')
+
+    return render(request, 'base/register.html', {'form': form})
+
+
+def sign_up(request):
+    form = UserCreationForm()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.first_name = user.first_name.lower()
+            user.last_name = user.last_name.lower()
+            user.save() 
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occourred during registration!')
+
+    return render(request, 'base/sign_up.html', {'form': form})
+
+
 def log_in(request):
     return render(request, 'base/login.html')
+
+
 def forgot_password(request):
     return render(request, 'base/forgot_password.html')
+
+
 def link_sent(request):
     return render(request, 'base/link_sent.html')
+
+
 def reset_password(request):
     return render(request, 'base/reset_password.html')
+
+
 def password_changed(request):
     return render(request, 'base/password_changed.html')
+
+
 def email_code(request):
     return render(request, 'base/email_code.html')
+
+
 def change_email(request):
     return render(request, 'base/change_email.html')
+
+
 def verification_complete(request):
     return render(request, 'base/verification_complete.html')
+
+
 def authentication_error(request):
     return render(request, 'base/authentication_error.html')
+
+
 def access_denied(request):
     return render(request, 'base/access_denied.html')
 
