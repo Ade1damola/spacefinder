@@ -35,6 +35,11 @@
     .foot{
         flex-direction: column;
     }
+
+
+    .vector{
+        display: none;
+    }
 }
     
 
@@ -56,5 +61,9 @@
     }
     .foot{
         flex-direction: column;
+    }
+
+    .vector{
+        display: none;
     }
 }
