@@ -1,9 +1,10 @@
 *{
-    font-family: Arial, Helvetica, sans-serif;
     padding: 0px;
     margin: 0;
 }
-
+body{
+  font-family: 'Manrope';
+}
 a{
     text-decoration: none;
 }
@@ -201,7 +202,11 @@ a{
 
 
 
-
+/* MAIN AUTHENTICATION PAGE */
+/* MAIN AUTHENTICATION PAGE */
+/* MAIN AUTHENTICATION PAGE */
+/* MAIN AUTHENTICATION PAGE */
+/* MAIN AUTHENTICATION PAGE */
   .or {
     display: flex;
     text-align: center;
@@ -222,3 +227,21 @@ a{
   }
   
   
+.main_auth{
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  position: relative;
+}
+
+.vector{
+  z-index: -1;
+}
+
+.form-label{
+  font-size: 16px;
+}
+
+.email-back{
+  background-color: rgba(225, 227, 226, 1);
+}
