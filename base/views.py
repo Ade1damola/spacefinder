@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm 
 from .forms import UserForm, SpaceForm, ContactForm, NewsletterSubscriptionForm
 from .models import Space, Message, School, NewsletterSubscription, UserRating, ContactFormSubmission
+from .tokens import account_activation_token
 
 
 # Create your views here.
@@ -266,23 +267,52 @@ def register(request):
 
 
 def sign_up(request):
-    form = UserCreationForm()
+    form = UserForm()
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            user.is_active = False
+            user.username = user.username.lower()
             user.first_name = user.first_name.lower()
             user.last_name = user.last_name.lower()
+            user.email = user.email.lower()
             user.save() 
-            login(request, user)
-            return redirect('home')
+            link_sent(request)
+            #login(request, user)
+            return redirect('link_sent')
         else:
-            messages.error(request, 'An error occourred during registration!')
+            for field, errors in form.errors.items():
+                messages.error(request, f'Error in field {field}: {", ".join(errors)}')
 
     return render(request, 'base/sign_up.html', {'form': form})
 
 
 def log_in(request):
+    # if request.user.is_authenticated:
+    #     return redirect('home')
+
+    if request.method == 'POST':
+        username = request.POST.get('username').lower()
+        #email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        try:
+           user = User.objects.get(username=username)
+
+        except:
+            messages.error(request, 'User does not exist')
+
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'Username or password does not exist')
+
+
     return render(request, 'base/login.html')
 
 

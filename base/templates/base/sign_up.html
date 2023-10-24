@@ -11,35 +11,40 @@
             <h4 class="text-success">Spacefinder</h4>
         </header>
         <h1 class="fw-bold">Sign up</h1>
-        <h2 class="text-secondary mb-3">Let's get you started</h2>
+        <!-- <h2 class="text-secondary mb-3">Let's get you started</h2> -->
     
         <form method="post" action="{% url 'sign_up' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" name="username">
+            </div>
             <div class="mb-3">
                 <label class="form-label">First name</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="first_name">
             </div>
             <div class="mb-3">
                 <label class="form-label">Last name</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" name="last_name">
             </div>
             <div class="mb-3">
                 <label class="form-label">Email Address</label>
-                <input type="email" class="form-control" placeholder="name@example.com">
+                <input type="email" class="form-control" placeholder="name@example.com" name="email">
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" required>   
+                <input type="password" class="form-control" id="password" name="password1" required>   
             </div>
             <div class="mb-3">
                 <label class="form-label">Confirm password</label>
-                <input type="password" class="form-control" id="show_hide_password" required>   
+                <input type="password" class="form-control" id="show_hide_password" name="password2" required>   
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" required>
-                <label class="form-check-label">I agree with zuri stores Terms of Service & Privacy Policy </label>
+                <label class="form-check-label">I agree with Spacefinder's Terms of Service & Privacy Policy </label>
             </div>
             <div class="d-grid gap-2 my-3">
-                <a href="#" class="btn btn-success" type="button">Continue</a>
+                <button class="btn btn-success" type="submit">Continue</button>
             </div>
             
         </form>

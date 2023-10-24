@@ -55,7 +55,7 @@ class Message(models.Model):
 class ContactFormSubmission(models.Model):
     subject = models.CharField(max_length=50)
     fullname = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     phone_number = models.CharField(
         max_length=11,
         blank=True,  
@@ -68,7 +68,7 @@ class ContactFormSubmission(models.Model):
 
 
 class NewsletterSubscription(models.Model):
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
 
     subscribed_at = models.DateTimeField(auto_now_add=True)
 

@@ -11,24 +11,27 @@
             <h4 class="text-success">Spacefinder</h4>
         </header>
         <h1 class="fw-bold">Log In</h1>
-        <h2 class="text-secondary pb-3">Log in to continue using zuriportfolio</h2>
     
-        <form>
+        <form method="post" action="{% url 'log_in' %}">
             {% csrf_token %}
             <div class="mb-3 d-grid gap-4">
-                <div>
+                <!-- <div>
                     <label class="form-label">Email address</label>
-                    <input type="email" class="form-control" placeholder="name@example.com">
+                    <input type="email" class="form-control" placeholder="name@example.com" name="email">
+                </div> -->
+                <div>
+                    <label class="form-label">Username or Email address</label>
+                    <input type="text" class="form-control" placeholder="Enter your username or email address" name="username">
                 </div>
                 <div>
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" required> 
+                    <input type="password" class="form-control" id="password" name="password" required> 
                 </div>
                 <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-success" type="button">Continue</a>
+                    <button class="btn btn-success" type="submit">Continue</button>
                 </div>
             </div>
-            <p class="text-center mt-4">Don't have an account yet? <a class="text-success text-decoration-none" href="{% url 'register' %}">Sign up</a></p>
+            <p class="text-center mt-4">Don't have an account yet? <a class="text-success text-decoration-none" href="{% url 'sign_up' %}">Sign up</a></p>
         </form>
             <div class="or my-4"><h6 class="title text-secondary">OR</h6></div>
             <div class="d-grid gap-2">
