@@ -230,7 +230,6 @@ a{
 .main_auth{
   padding: 0px;
   margin: 0px;
-  overflow: hidden;
   position: relative;
 }
 
@@ -244,4 +243,21 @@ a{
 
 .email-back{
   background-color: rgba(225, 227, 226, 1);
+  width: auto;
+  height: auto;
+}
+
+body div.square{
+  width: 700px;
+  height: auto;
+}
+
+.error{
+  width: 480px;
+  height: 480px;
+}
+
+.nine-0{
+  width: 220px;
+  height: 220px;
 }

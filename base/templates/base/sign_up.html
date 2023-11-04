@@ -1,17 +1,17 @@
 {% extends 'main_authentication.html' %}
 {% load static %}
 {% block content %}
-<img src="{% static "/images/Vector.png" %}" class="vector position-absolute top-0 end-0">
-<div class="register container d-flex justify-content-between align-items-center">
-    <div class="container">
+<img src="{% static "/images/Vector.png" %}" class="vector position-absolute top-0 end-0 d-none d-lg-block">
+<div class="register container d-flex justify-content-between align-items-start">
+    <div class="container d-none d-lg-block">
         <img src="{% static "/images/Rectangle 2.png" %}" class="pt-3 pb-2" style="height: 700px;">
     </div>
-    <div class="container">
-        <header class="my-4">
+    <div class="container vh-100">
+        <div class="my-4">
             <h4 class="text-success">Spacefinder</h4>
-        </header>
-        <h1 class="fw-bold">Sign up</h1>
-        <!-- <h2 class="text-secondary mb-3">Let's get you started</h2> -->
+        </div>
+        <h1 class="fw-lg-bold heading">Sign up</h1>
+        <h6 class="text-secondary mb-3 sub-heading d-lg-none d-xl-none d-xxl-none">Let's get you started</h6>
     
         <form method="post" action="{% url 'sign_up' %}">
             {% csrf_token %}
@@ -45,10 +45,11 @@
             </div>
             <div class="d-grid gap-2 my-3">
                 <button class="btn btn-success" type="submit">Continue</button>
+                <p class="text-center">Already have an account? <a class="text-success text-decoration-none" href="{% url 'log_in' %}">Sign in</a></p>
             </div>
             
         </form>
-        <p class="text-center mt-4">Already have an account? <a class="text-success text-decoration-none" href="{% url 'log_in' %}">Sign in</a></p>
+
             
         
     </div>

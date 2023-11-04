@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm 
 from .forms import UserForm, SpaceForm, ContactForm, NewsletterSubscriptionForm
 from .models import Space, Message, School, NewsletterSubscription, UserRating, ContactFormSubmission
-from .tokens import account_activation_token
+# from .tokens import account_activation_token
 
 
 # Create your views here.
@@ -338,6 +338,10 @@ def email_code(request):
 
 def change_email(request):
     return render(request, 'base/change_email.html')
+
+
+def verification_link(request):
+    return render(request, 'base/verification_link.html')
 
 
 def verification_complete(request):

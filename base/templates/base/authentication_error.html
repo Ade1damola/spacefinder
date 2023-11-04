@@ -2,16 +2,16 @@
 {% load static %}
 {% block content %}
 
-<div class="register container d-flex justify-content-between align-items-center">
+<div class="register container d-flex flexed justify-content-between align-items-center">
     <div class="container px-5">
-        <h1 class="fw-bold">Oops! You've wandered off the path 🗺️</h1>
-        <h4 class="text-secondary mb-5">Even the best explorers take wrong turns. Don't worry,<br> we've got your back .Let's get you back on track!</h4>
+        <h1 class="fw-lg-bold heading text">Oops! You've wandered off the path🗺️</h1>
+        <h4 class="text-secondary mb-5 sub-heading sub-text">Even the best explorers take wrong turns. Don't worry,<br class="d-none d-lg-none"> we've got your back. Let's get you back on track!</h4>
         <div class="d-grid gap-2 my-3">
             <a href="#" class="btn btn-success" type="button">Back to homepage</a>
         </div>
     </div>
-    <div class="container">
-        <img src="{% static "/images/404error.png" %}" style="width: 480px; height: 480px;">
+    <div class="container heading align-item-sm-center">
+        <img src="{% static "/images/404error.png" %}" class="error heading">
     </div>
 </div>
 {% endblock %}
