@@ -104,7 +104,7 @@ a{
     background-image: url("/static/images/Rectangle\ 8587.png");
     background-repeat: no-repeat;
     background-size: cover;
-    width: 50px;
+    width: auto;
     height: 200px;
 }
 

@@ -1,5 +1,5 @@
 {% extends 'main.html' %}
-
+{% load static %}
 
 {% block content %}
 <section class="background-section position-relative">
@@ -41,7 +41,7 @@
   </form>
 </section>
 <!-- POPULAR SECTION -->
-<section class="container hostel-section">
+<section class="container hostel-section mb-5">
   <div class="d-flex justify-content-between align-items-center">
     <div class="d-inline-flex align-items-center">
       <div><h2>Popular Hostels</h2></div>
@@ -49,21 +49,21 @@
     </div>
     <div><a href="{% url 'hostel' %}" class="text-success text-decoration-none">View all></a></div>
   </div>
-  <div class=" row row-cols-1 row-cols-md-4 g-4">
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for space in spaces %}
     <div class="col">
-      {% for space in spaces %}
-
         <div class="card">
           <div class="card-img-top d-inline-flex justify-content-between align-items-start p-4 ">
             <button class="btn btn-secondary">Top Picks</button>
-            <img class="text-white" width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/000000/following.png" alt="following"/>
-          {% comment %} <i class="fa fa-gratipay fa-2x text-white" aria-hidden="true"></i> {% endcomment %}
+            <img class="text-white" width="30" height="30" src="{% static "/images/Like.svg" %}">
           </div>
-          <div class="card-body">
+        
+        <div class="card-body">
             <h6 class="card-title">{{space.hostel}} Room {{space.room_number}}</h6>
             <h4 class="card-text fw-bold">#{{space.price}}</h4>
             <p class="card-text">By: {{space.host}}</p>
           </div>
+        </div>
        </div>
       {% endfor %}
 
