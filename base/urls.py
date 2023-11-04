@@ -28,6 +28,7 @@ urlpatterns =[
     path('email_code/', views.email_code, name="email_code"),
     path('change_email/', views.change_email, name="change_email"),
     path('auth_error/', views.authentication_error, name="authentication_error"),
+    path('verification_link/', views.verification_link, name="verification_link"),
     path('verification_complete/', views.verification_complete, name="verification_complete"),
     path('access_denied/', views.access_denied, name="access_denied"),
 

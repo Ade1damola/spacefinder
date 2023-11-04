@@ -37,9 +37,40 @@
     }
 
 
-    .vector{
-        display: none;
+    .heading, .sub-heading{
+        text-align: center;
     }
+
+    .email-back{
+        background-color: white;
+    }
+
+    .flexed{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .error{
+        width: 200px;
+        height: 200px;
+    }
+
+    .text{
+        font-size: 20px;
+    }
+    .sub-text{
+        font-size: 12px;
+    }
+
+    .nine-0{
+        width: 150px;
+        height: 150px;
+    }
+
+    body div.square{
+        width: auto;
+        height: auto;
+      }
 }
     
 
@@ -63,7 +94,43 @@
         flex-direction: column;
     }
 
-    .vector{
-        display: none;
+
+    .main_auth{
+        padding: 50px;
+      }
+    .heading, .sub-heading{
+        text-align: center;
     }
+    .email-back{
+        background-color: white;
+        
+    }
+
+    .flexed{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .error{
+        width: 200px;
+        height: 200px;
+    }
+
+    .text{
+        font-size: 20px;
+    }
+    .sub-text{
+        font-size: 12px;
+    }
+
+    .nine-0{
+        width: 150px;
+        height: 150px;
+    }
+
+    body div.square{
+        width: auto;
+        height: auto;
+      }
 }
+

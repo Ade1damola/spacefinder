@@ -1,20 +1,21 @@
 {% extends 'main_authentication.html' %}
 {% load static %}
 {% block content %}
-<img src="{% static "/images/Vector.png" %}" class="vector position-absolute top-0 end-0">
+<img src="{% static "/images/Vector.png" %}" class="vector position-absolute top-0 end-0 d-none d-lg-block">
 <div class="register container d-flex justify-content-between align-items-center">
-    <div class="container">
+    <div class="container d-none d-lg-block">
         <img src="{% static "/images/Rectangle 2.png" %}" class="pt-3 pb-2" style="height: 700px;">
     </div>
     <div class="container">
-        <header class="my-4">
+        <div class="my-4">
             <h4 class="text-success">Spacefinder</h4>
-        </header>
-        <h1 class="fw-bold">Log In</h1>
+        </div>
+        <h1 class="fw-lg-bold heading">Log In</h1>
+        <h6 class="text-secondary mb-3 sub-heading d-lg-none d-xl-none d-xxl-none">Log in to continue using zuristores</h6>
     
         <form method="post" action="{% url 'log_in' %}">
             {% csrf_token %}
-            <div class="mb-3 d-grid gap-4">
+            <div class="mb-3 mt-md-3 d-grid gap-4">
                 <!-- <div>
                     <label class="form-label">Email address</label>
                     <input type="email" class="form-control" placeholder="name@example.com" name="email">
@@ -33,7 +34,7 @@
             </div>
             <p class="text-center mt-4">Don't have an account yet? <a class="text-success text-decoration-none" href="{% url 'sign_up' %}">Sign up</a></p>
         </form>
-            <div class="or my-4"><h6 class="title text-secondary">OR</h6></div>
+            {% comment %} <div class="or my-4 container"><h6 class="title text-secondary">OR</h6></div> {% endcomment %}
             <div class="d-grid gap-2">
                 <a href="#" class="btn border border-secondary-subtle text-secondary" type="button"><img src="{% static "/images/google_.svg" %}" class="me-4"></i>Continue with Google</a>
                 <a href="#" class="btn border border-secondary-subtle text-secondary" type="button"><img src="{% static "/images/github_.svg" %}" class="me-4">Continue with Github</a>

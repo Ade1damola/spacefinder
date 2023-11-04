@@ -1,12 +1,12 @@
 {% extends 'main_authentication.html' %}
 {% load static %}
 {% block content %}
-<img src="{% static "/images/Vector.png" %}" class="vector position-absolute top-0 end-0">
-<div class="register container d-flex justify-content-between align-items-">
-    <div class="container">
+<img src="{% static "/images/Vector.png" %}" class="vector position-absolute top-0 end-0 d-none d-lg-block">
+<div class="register container d-flex justify-content-between align-items-start">
+    <div class="container d-none d-lg-block">
         <img src="{% static "/images/Rectangle 2.png" %}" class="pt-3 pb-2" style="height: 700px;">
     </div>
-    <div class="container p-5 ps-0">
+    <div class="container">
         <div class="my-4">
             <h4 class="text-success">Spacefinder</h4>
         </div>
@@ -14,7 +14,7 @@
         <form class="d-grid gap-3 pt-5">
             <div class="text-center">
                 <img src="{% static "/images/letters 1.svg" %}" class="mx-auto">
-                <h2 class="text-secondary">A link has been sent to your mail</h2>
+                <h2 class="text-secondary sub-heading">A link has been sent to your mail</h2>
             </div>
             <div class="d-grid gap-2 my-3">
                 <a href="#" class="btn btn-success" type="button">Check email to proceed</a>

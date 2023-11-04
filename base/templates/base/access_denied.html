@@ -2,16 +2,17 @@
 {% load static %}
 {% block content %}
 
-<div class="register container d-flex justify-content-between align-items-center">
+<div class="register container d-flex flexed justify-content-between align-items-center">
     <div class="container px-5">
-        <h1 class="fw-bold">Access Denied 🚫</h1>
-        <h4 class="text-secondary mb-5">Whoa there, hold on! It looks like this area is off-limits. Our virtual police officer is here to ensure your safety and privacy.You might need special credentials or permissions to enter this zone</h4>
+        <h1 class="fw-lg-bold heading text">Access Denied🚫</h1>
+        <h4 class="text-secondary mb-5 d-none d-lg-block">Whoa there, hold on! It looks like this area is off-limits. Our virtual police officer is here to ensure your safety and privacy. You might need special credentials or permissions to enter this zone</h4>
+        <h4 class="text-secondary mb-5 sub-heading d-lg-none d-xl-none sub-text">You might need special credentials or permissions to enter this zone</h4>
         <div class="d-grid gap-2 my-3">
             <a href="#" class="btn btn-success" type="button">Back to homepage</a>
         </div>
     </div>
-    <div class="container">
-        <img src="{% static "/images/403error.png" %}" style="width: 480px; height: 548px;">
+    <div class="container heading align-item-sm-center">
+        <img src="{% static "/images/403error.png" %}" class="error heading">
     </div>
 </div>
 {% endblock %}

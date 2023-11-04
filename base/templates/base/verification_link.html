@@ -1,0 +1,28 @@
+{% extends 'second_main_authentication.html' %}
+{% load static %}
+{% block content %}
+<img src="{% static "/images/Vector.png" %}" class="vector position-absolute top-0 end-0 d-none d-lg-block">
+    <div class="container square align-items-center">
+        <div class="text-center">
+            <img src="{% static "/images/Frame 909.svg" %}" class="nine-0" >
+        </div>
+        <div class="email-back rounded-5 p-5">
+            <h1 class="fw-lg-bold text-center">Verification Link Sent</h1>
+            <p class="text-secondary text-center">We've sent an email to your <a class="text-success text-decoration-none" href="#">www.sunmicah01@gmail.com</a> with a verification link.</p>
+        <form>
+            <div class="mb-3 d-grid gap-4">
+                <div class="d-grid gap-2">
+                    <a href="#" class="btn btn-success" type="button">Resend Verification Link</a>
+                </div>
+                <div class="d-flex flexed justify-content-between">
+                    <p class="">Link expires in <a class="text-success text-decoration-none" href="#">4:36</a></p>
+                    <a class="text-success text-decoration-none" href="#">Incorrect email address? Change email address</a>
+                </div>
+            </div>
+            
+        </form>
+        </div>
+        
+    </div>
+
+{% endblock %}

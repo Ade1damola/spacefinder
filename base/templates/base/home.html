@@ -49,29 +49,31 @@
     </div>
     <div><a href="{% url 'hostel' %}" class="text-success text-decoration-none">View all></a></div>
   </div>
-{% for space in spaces %}
   <div class=" row row-cols-1 row-cols-md-4 g-4">
     <div class="col">
-      <div class="card h-100">
-        <div class="card-img-top d-inline-flex justify-content-between align-items-start p-4 ">
-          <button class="btn btn-secondary">Top Picks</button>
-          <img class="text-white" width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/000000/following.png" alt="following"/>
+      {% for space in spaces %}
+
+        <div class="card">
+          <div class="card-img-top d-inline-flex justify-content-between align-items-start p-4 ">
+            <button class="btn btn-secondary">Top Picks</button>
+            <img class="text-white" width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/000000/following.png" alt="following"/>
           {% comment %} <i class="fa fa-gratipay fa-2x text-white" aria-hidden="true"></i> {% endcomment %}
-        </div>
-        <div class="card-body">
-          <h6 class="card-title">{{space.hostel}} Room {{space.room_number}}</h6>
-          <h4 class="card-text fw-bold">#{{space.price}}</h4>
-          <p class="card-text">By: {{space.host}}</p>
-        </div>
-      </div>
+          </div>
+          <div class="card-body">
+            <h6 class="card-title">{{space.hostel}} Room {{space.room_number}}</h6>
+            <h4 class="card-text fw-bold">#{{space.price}}</h4>
+            <p class="card-text">By: {{space.host}}</p>
+          </div>
+       </div>
+      {% endfor %}
+
     </div>
   </div>
-{% endfor %}
 </section>
 
 
 <!-- WHY SECTION -->
-<section class="why-section container">
+<section class="why-section container mt-5">
   <h2>Why choose us</h2>
   <p>
     When it comes to finding the perfect hostel, you have plenty of options. So, why should you choose Spacefinder? We're passionate about providing you with the best hostel experience possible, and here are some compelling reasons why you should make us your go-to choice:
